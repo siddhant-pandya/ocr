@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+    <title>OCR App</title>
+    {% load static %}
+</head>
+
+<body>
+    <main>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">OCR Project</h1>
+                    <p class="lead text-muted">Transform any image to digital text which you can copy and use it
+                        wherever you need.</p>
+                    <form method="post" enctype="multipart/form-data" class="">
+                        {% csrf_token %}
+                        <input type="file" name="myfile" class="btn">
+                        <button type="submit" class="btn btn-primary">Read</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% if txt %}
+    <div class="container d-flex justify-content-center py-3">
+
+        <div class="card  shadow">
+            <img class="card-img-top img-fluid p-2 py-3 border" src="{{ img }}" alt="Card image cap">
+            <div class="card-body" id="txt"> {{ txt }} </div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>
